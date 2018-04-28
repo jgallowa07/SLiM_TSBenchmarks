@@ -31,6 +31,8 @@ initialize() {
 	timeToRun = 10 * NumInd;
 
 	sim.rescheduleScriptBlock(s1,timeToRun,timeToRun);
+
+	sim.treeSeqOutput("~/Documents/SLiM_TS_Benchmarks/Bench/Tables");
 }
 s1 10000 late() { sim.simulationFinished(); }
 
