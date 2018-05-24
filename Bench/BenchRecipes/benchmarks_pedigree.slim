@@ -25,9 +25,14 @@ initialize() {
 
 	timeToRun = 10 * NumInd;
 	sim.rescheduleScriptBlock(s1,timeToRun,timeToRun);
+}
+s1 10000 late() { 
+
 	tablesfilestring = asString(n_ind) + "_" + asString(size_rho) + "Tables";
 	sim.treeSeqOutput("~/Documents/SLiM_TSBenchmarks/Bench/Tables/tablesfilestring");
-}
-s1 10000 late() { sim.simulationFinished(); }
+	catn("Simulation Finished");
+	sim.simulationFinished(); 
+
+	}
 
 

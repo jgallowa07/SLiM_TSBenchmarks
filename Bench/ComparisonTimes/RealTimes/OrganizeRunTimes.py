@@ -60,7 +60,7 @@ for i in files:
     trace_key = sep_value[1][1:] + "_" + sep_value[2]
     fp = open(i,'r')
     data = fp.readline().split('/')
-    runtime = float(data[2]) / 60 / 60
+    runtime = float(data[2])/60/60
     memory = float(data[3])
     #print(runtime,memory)
 
