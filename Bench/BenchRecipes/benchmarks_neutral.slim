@@ -34,6 +34,11 @@ initialize() {
 
 	sim.rescheduleScriptBlock(s1,timeToRun,timeToRun);
 }
-s1 10000 late() { sim.simulationFinished(); }
+s1 10000 late() { 
+	
+	catn("Simulation Finished");
+	sim.simulationFinished(); 
+
+}
 
 

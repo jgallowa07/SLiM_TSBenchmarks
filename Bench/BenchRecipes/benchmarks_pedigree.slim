@@ -21,18 +21,19 @@ initialize() {
     	initializeRecombinationRate(mutation_recombination_Rate);
 	
 }
-1 late() { sim.addSubpop("p1", NumInd); 
+1 late() { 
 
+	sim.addSubpop("p1", NumInd); 
 	timeToRun = 10 * NumInd;
 	sim.rescheduleScriptBlock(s1,timeToRun,timeToRun);
 }
 s1 10000 late() { 
 
 	tablesfilestring = asString(n_ind) + "_" + asString(size_rho) + "Tables";
-	sim.treeSeqOutput("~/Documents/SLiM_TSBenchmarks/Bench/Tables/tablesfilestring");
+	sim.treeSeqOutput("~/Documents/SLiM_TSBenchmarks/Bench/Tables/" + tablesfilestring);
 	catn("Simulation Finished");
 	sim.simulationFinished(); 
 
-	}
+}
 
 

@@ -34,12 +34,19 @@ Keys
 
 neut_timing_N1000
 neut_timing_N10000
+
 pedNM_timing_N1000
 pedNM_timing_N10000
+
 ped_timing_N1000
 ped_timing_N10000
+ped_add_timing_N1000
+ped_add_timing_N10000
+
 rel_timing_N1000
 rel_timing_N10000
+
+
 '''
 for i in sys.argv[1:]:
     OK = True
@@ -71,21 +78,38 @@ for i in files:
         timing_data[trace_key] = [runtime]
         memory_data[trace_key] = [memory]
 
-#print(timing_data)
+#print(timing_data["ped_timing_N1000"])
+
+for i in timing_data:
+#    print(i, "has value", timing_data[i])
+    parse = i.split("_")
+    if (parse[1] == "add"):
+        #print(parse)
+
+        #print(i, "has value", timing_data[i])
+        for j in range(len(timing_data[i])):
+            timing_data[parse[0]+"_"+parse[2]+"_"+parse[3]][j] += timing_data[i][j]
+
+
+#print(timing_data["ped_timing_N1000"])
+        
+
+
+
 
 PopSizes = ['N = 1e+03','N = 1e+04']
 
 f, axarr = plt.subplots(1,2,sharey=True,sharex=True)
-axarr[0].plot(P,timing_data['neut_timimg_N1000'],'go-',label=PopSizes[0])
-axarr[0].plot(P,timing_data['neut_timimg_N10000'],'b^-',label=PopSizes[1])
+axarr[0].plot(P,timing_data['neut_timing_N1000'],'go-',label=PopSizes[0])
+axarr[0].plot(P,timing_data['neut_timing_N10000'],'b^-',label=PopSizes[1])
 axarr[0].legend(loc='upper left',frameon=False)
 axarr[0].set_xscale('log')
 axarr[0].set_ylabel('Run time (hours)',fontsize='small')
 axarr[0].set_xlabel('Scaled recombination rate (' + r'$\rho = 4Nr$)',fontsize='small')
 axarr[0].set_title('With Neutral Mutations',fontsize='medium')
 
-axarr[1].plot(P,timing_data['ped_timimg_N1000'],'go-',label=PopSizes[0])
-axarr[1].plot(P,timing_data['ped_timimg_N10000'],'b^-',label=PopSizes[1])
+axarr[1].plot(P,timing_data['ped_timing_N1000'],'go-',label=PopSizes[0])
+axarr[1].plot(P,timing_data['ped_timing_N10000'],'b^-',label=PopSizes[1])
 axarr[1].legend(loc='upper left',frameon=False)
 axarr[1].set_xlabel('Scaled recombination rate (' + r'$\rho = 4Nr$)',fontsize='small')
 axarr[1].set_title('With Pedigree Recording',fontsize='medium')
@@ -94,14 +118,14 @@ plt.show()
 
 '''
 f, axarrr = plt.subplots(1,2,sharey=True,sharex=True)
-axarr[0].plot(P,timing_data['rel_timimg_N1000'],'go-',label=PopSizes[0])
-axarr[0].plot(P,timing_data['rel_timimg_N10000'],'b^-',label=PopSizes[1])
+axarr[0].plot(P,timing_data['rel_timing_N1000'],'go-',label=PopSizes[0])
+axarr[0].plot(P,timing_data['rel_timing_N10000'],'b^-',label=PopSizes[1])
 axarr[0].legend(loc='upper left',frameon=False)
 axarr[0].set_xscale('log')
 
 
-axarr[1].plot(P,timing_data['rel_timimg_N1000'],'go-',label=PopSizes[0])
-axarr[1].plot(P,timing_data['rel_timimg_N10000'],'b^-',label=PopSizes[1])
+axarr[1].plot(P,timing_data['rel_timing_N1000'],'go-',label=PopSizes[0])
+axarr[1].plot(P,timing_data['rel_timing_N10000'],'b^-',label=PopSizes[1])
 '''     
 
    
