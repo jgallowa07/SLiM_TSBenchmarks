@@ -24,7 +24,7 @@ import sys
 import re
 files = []
 
-P = [1000,10000]
+P = [1000,2500,5000,7500,10000]
 
 timing_data = {}
 memory_data = {}
@@ -93,9 +93,8 @@ for i in timing_data:
 
 #print(timing_data["ped_timing_N1000"])
         
-
-
-
+for i in timing_data:
+    timing_data[i] = sorted(timing_data[i])
 
 PopSizes = ['N = 1e+03','N = 1e+04']
 
