@@ -19,6 +19,7 @@ PEDNM_TIME_FILE_NAME=pedNM_timing.N$N"."size$size".out"
 REL_OUTPUT_FILE_NAME=rel_output.N$N"."size$size".out"
 REL_TIME_FILE_NAME=rel_timing.N$N"."size$size".out"
 
+MUTRATE=$(echo "scale=10; ($size / (4.0 * $N)) / 100000000.0"|bc)
 
 #Neutral Mutations
 /usr/local/Cellar/gnu-time/1.9/bin/gtime --format="%E / %S / %U / %M" \
@@ -38,7 +39,7 @@ REL_TIME_FILE_NAME=rel_timing.N$N"."size$size".out"
 #Time To layover neutral mutations over the trees
 /usr/local/Cellar/gnu-time/1.9/bin/gtime --format="%E / %S / %U / %M" \
   --output="../ComparisonTimes/TestTimes/$PED_ADD_TIME_FILE_NAME" \
-  /usr/local/bin/python3.6 add-mutation.py --tree_file ../Tables/$PED_TABLE_FILE -o ../VCF_Tables/ &> ../Output/Tests/$PED_ADD_OUTPUT_FILE_NAME  
+  /usr/local/bin/python3.6 add-mutation.py  --mut_rate $MUTRATE --tree_file ../Tables/$PED_TABLE_FILE -o ../VCF_Tables/ &> ../Output/Tests/$PED_ADD_OUTPUT_FILE_NAME  
 
 #Pedigree Recording W/O Mutations
 /usr/local/Cellar/gnu-time/1.9/bin/gtime --format="%E / %S / %U / %M" \
