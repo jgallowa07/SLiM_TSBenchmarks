@@ -1,10 +1,11 @@
 #!/bin/bash
 
 SEED=27467
+#SECONDS_TO_KILL=`echo "72*60*60"|bc -l`
 
-for N in 1000 10000 
+for N in 1000
 do
-	for size in 20000  
+	for size in 100000  
 	do	
 		
 		PED_OUTPUT_FILE_NAME=ped_output.N$N"."size$size".out"
@@ -22,7 +23,7 @@ do
 		REL_OUTPUT_FILE_NAME=rel_output.N$N"."size$size".out"
 		REL_TIME_FILE_NAME=rel_timing.N$N"."size$size".out"
 
-		MUTRATE=$(echo "scale=10; ($size / (4.0 * $N)) / 100000000.0"|bc)
+		MUTRATE=$(echo "scale=10; ($size / (4.0 * $N)) / 100000000.0" | bc)
 
 		#Neutral Mutations
 		/usr/local/Cellar/gnu-time/1.9/bin/gtime --format='%E / %S / %U / %M' \
