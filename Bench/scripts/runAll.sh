@@ -3,9 +3,9 @@
 SEED=27467
 #SECONDS_TO_KILL=`echo "72*60*60"|bc -l`
 
-for N in 1000
+for N in 1000 5000 10000
 do
-	for size in 100000  
+	for size in 1000 2500 5000 100000   
 	do	
 		
 		PED_OUTPUT_FILE_NAME=ped_output.N$N"."size$size".out"
